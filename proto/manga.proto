@@ -1,0 +1,57 @@
+
+syntax = "proto3";
+
+package mangahub.catalog.v1;
+
+option go_package = "mangahub/proto/mangapb;mangapb";
+
+// CatalogService manages manga metadata through gRPC.
+service CatalogService {
+  rpc SearchManga(SearchMangaRequest)
+      returns (SearchMangaResponse);
+
+  rpc GetManga(GetMangaRequest)
+      returns (GetMangaResponse);
+
+  rpc UpdateChapters(UpdateChaptersRequest)
+      returns (UpdateChaptersResponse);
+}
+
+// Manga represents a catalog entry.
+message Manga {
+  string id = 1;
+  string title = 2;
+  string author = 3;
+  repeated string genres = 4;
+  string status = 5;
+  int32 total_chapters = 6;
+  string description = 7;
+}
+
+// Search manga by title or other indexed metadata.
+message SearchMangaRequest {
+  string query = 1;
+}
+
+message SearchMangaResponse {
+  repeated Manga manga = 1;
+}
+
+// Retrieve a single manga using its unique ID.
+message GetMangaRequest {
+  string id = 1;
+}
+
+message GetMangaResponse {
+  Manga manga = 1;
+}
+
+// Update the total published chapter count.
+message UpdateChaptersRequest {
+  string id = 1;
+  int32 total_chapters = 2;
+}
+
+message UpdateChaptersResponse {
+  Manga manga = 1;
+}
