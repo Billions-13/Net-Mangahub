@@ -1,0 +1,457 @@
+[
+  {
+    "id": "one-piece",
+    "title": "One Piece",
+    "author": "Eiichiro Oda",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "status": "ongoing",
+    "total_chapters": 1199,
+    "description": "A young pirate and his crew sail the seas in search of a legendary treasure."
+  },
+  {
+    "id": "naruto",
+    "title": "Naruto",
+    "author": "Masashi Kishimoto",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Fantasy"
+    ],
+    "status": "completed",
+    "total_chapters": 700,
+    "description": "A determined young ninja trains to earn the respect of his village."
+  },
+  {
+    "id": "bleach",
+    "title": "Bleach",
+    "author": "Tite Kubo",
+    "genres": [
+      "Action",
+      "Supernatural",
+      "Fantasy"
+    ],
+    "status": "completed",
+    "total_chapters": 686,
+    "description": "A teenager who can see spirits becomes involved in the world of Soul Reapers."
+  },
+  {
+    "id": "dragon-ball",
+    "title": "Dragon Ball",
+    "author": "Akira Toriyama",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Comedy"
+    ],
+    "status": "completed",
+    "total_chapters": 519,
+    "description": "A martial artist travels with friends to seek powerful wish-granting orbs."
+  },
+  {
+    "id": "death-note",
+    "title": "Death Note",
+    "author": "Tsugumi Ohba and Takeshi Obata",
+    "genres": [
+      "Mystery",
+      "Thriller",
+      "Supernatural"
+    ],
+    "status": "completed",
+    "total_chapters": 108,
+    "description": "A student discovers a notebook that grants deadly power and draws a detective into a battle of wits."
+  },
+  {
+    "id": "demon-slayer",
+    "title": "Demon Slayer: Kimetsu no Yaiba",
+    "author": "Koyoharu Gotouge",
+    "genres": [
+      "Action",
+      "Fantasy",
+      "Supernatural"
+    ],
+    "status": "completed",
+    "total_chapters": 205,
+    "description": "A boy joins demon slayers after tragedy strikes his family."
+  },
+  {
+    "id": "jujutsu-kaisen",
+    "title": "Jujutsu Kaisen",
+    "author": "Gege Akutami",
+    "genres": [
+      "Action",
+      "Dark Fantasy",
+      "Supernatural"
+    ],
+    "status": "completed",
+    "total_chapters": 271,
+    "description": "A student enters a dangerous world of curses and sorcerers."
+  },
+  {
+    "id": "my-hero-academia",
+    "title": "My Hero Academia",
+    "author": "Kohei Horikoshi",
+    "genres": [
+      "Action",
+      "Superhero",
+      "School"
+    ],
+    "status": "completed",
+    "total_chapters": 430,
+    "description": "A boy without superpowers pursues his dream of becoming a hero."
+  },
+  {
+    "id": "haikyu",
+    "title": "Haikyu!!",
+    "author": "Haruichi Furudate",
+    "genres": [
+      "Sports",
+      "Comedy",
+      "School"
+    ],
+    "status": "completed",
+    "total_chapters": 402,
+    "description": "A short but passionate player aims to take his high school volleyball team to new heights."
+  },
+  {
+    "id": "the-promised-neverland",
+    "title": "The Promised Neverland",
+    "author": "Kaiu Shirai and Posuka Demizu",
+    "genres": [
+      "Mystery",
+      "Thriller",
+      "Fantasy"
+    ],
+    "status": "completed",
+    "total_chapters": 181,
+    "description": "Children at an isolated orphanage uncover a terrifying secret."
+  },
+  {
+    "id": "dr-stone",
+    "title": "Dr. STONE",
+    "author": "Riichiro Inagaki and Boichi",
+    "genres": [
+      "Science Fiction",
+      "Adventure",
+      "Comedy"
+    ],
+    "status": "completed",
+    "total_chapters": 232,
+    "description": "A science-minded teenager works to rebuild civilization after a mysterious petrification."
+  },
+  {
+    "id": "assassination-classroom",
+    "title": "Assassination Classroom",
+    "author": "Yusei Matsui",
+    "genres": [
+      "Comedy",
+      "Science Fiction",
+      "School"
+    ],
+    "status": "completed",
+    "total_chapters": 180,
+    "description": "A class receives a strange mission involving its powerful new teacher."
+  },
+  {
+    "id": "chainsaw-man",
+    "title": "Chainsaw Man",
+    "author": "Tatsuki Fujimoto",
+    "genres": [
+      "Action",
+      "Dark Fantasy",
+      "Horror"
+    ],
+    "status": "ongoing",
+    "total_chapters": 232,
+    "description": "A struggling young man becomes a devil hunter after merging with his companion."
+  },
+  {
+    "id": "spy-x-family",
+    "title": "Spy x Family",
+    "author": "Tatsuya Endo",
+    "genres": [
+      "Comedy",
+      "Action",
+      "Slice of Life"
+    ],
+    "status": "ongoing",
+    "total_chapters": 144,
+    "description": "A spy forms a pretend family without realizing its members have secrets of their own."
+  },
+  {
+    "id": "sakamoto-days",
+    "title": "Sakamoto Days",
+    "author": "Yuto Suzuki",
+    "genres": [
+      "Action",
+      "Comedy",
+      "Crime"
+    ],
+    "status": "completed",
+    "total_chapters": 284,
+    "description": "A retired assassin protects his peaceful everyday life from enemies of his past."
+  },
+  {
+    "id": "black-clover",
+    "title": "Black Clover",
+    "author": "Yuki Tabata",
+    "genres": [
+      "Action",
+      "Fantasy",
+      "Adventure"
+    ],
+    "status": "ongoing",
+    "total_chapters": 390,
+    "description": "A magicless boy hopes to become the Wizard King in a world of powerful mages."
+  },
+  {
+    "id": "one-punch-man",
+    "title": "One-Punch Man",
+    "author": "ONE and Yusuke Murata",
+    "genres": [
+      "Action",
+      "Superhero",
+      "Comedy"
+    ],
+    "status": "ongoing",
+    "total_chapters": 241,
+    "description": "A hero who defeats enemies with a single punch searches for a real challenge."
+  },
+  {
+    "id": "kaiju-no-8",
+    "title": "Kaiju No. 8",
+    "author": "Naoya Matsumoto",
+    "genres": [
+      "Action",
+      "Science Fiction",
+      "Monster"
+    ],
+    "status": "completed",
+    "total_chapters": 129,
+    "description": "A worker who cleans up monster attacks gains an extraordinary new ability."
+  },
+  {
+    "id": "kaguya-sama",
+    "title": "Kaguya-sama: Love Is War",
+    "author": "Aka Akasaka",
+    "genres": [
+      "Romance",
+      "Comedy",
+      "School"
+    ],
+    "status": "completed",
+    "total_chapters": 281,
+    "description": "Two brilliant student council members try to make the other confess their feelings first."
+  },
+  {
+    "id": "golden-kamuy",
+    "title": "Golden Kamuy",
+    "author": "Satoru Noda",
+    "genres": [
+      "Historical",
+      "Adventure",
+      "Action"
+    ],
+    "status": "completed",
+    "total_chapters": 314,
+    "description": "A war veteran and an Ainu girl search for hidden gold in northern Japan."
+  },
+  {
+    "id": "mashle",
+    "title": "Mashle: Magic and Muscles",
+    "author": "Hajime Komoto",
+    "genres": [
+      "Action",
+      "Fantasy",
+      "Comedy"
+    ],
+    "status": "completed",
+    "total_chapters": 162,
+    "description": "A boy without magic relies on extraordinary strength at a magic school."
+  },
+  {
+    "id": "hells-paradise",
+    "title": "Hell’s Paradise: Jigokuraku",
+    "author": "Yuji Kaku",
+    "genres": [
+      "Action",
+      "Dark Fantasy",
+      "Adventure"
+    ],
+    "status": "completed",
+    "total_chapters": 127,
+    "description": "Condemned fighters explore a perilous island in pursuit of an elixir of life."
+  },
+  {
+    "id": "food-wars",
+    "title": "Food Wars!: Shokugeki no Soma",
+    "author": "Yuto Tsukuda and Shun Saeki",
+    "genres": [
+      "Cooking",
+      "Comedy",
+      "School"
+    ],
+    "status": "completed",
+    "total_chapters": 315,
+    "description": "A young cook faces intense culinary challenges at an elite academy."
+  },
+  {
+    "id": "yu-yu-hakusho",
+    "title": "YuYu Hakusho",
+    "author": "Yoshihiro Togashi",
+    "genres": [
+      "Action",
+      "Supernatural",
+      "Adventure"
+    ],
+    "status": "completed",
+    "total_chapters": 175,
+    "description": "A delinquent becomes a spirit detective and investigates supernatural threats."
+  },
+  {
+    "id": "blue-flag",
+    "title": "Blue Flag",
+    "author": "KAITO",
+    "genres": [
+      "Romance",
+      "Drama",
+      "School"
+    ],
+    "status": "completed",
+    "total_chapters": 53,
+    "description": "High school friends grapple with love, identity, and difficult decisions."
+  },
+  {
+    "id": "undead-unluck",
+    "title": "Undead Unluck",
+    "author": "Yoshifumi Tozuka",
+    "genres": [
+      "Action",
+      "Supernatural",
+      "Comedy"
+    ],
+    "status": "completed",
+    "total_chapters": 239,
+    "description": "Two people with unusual powers confront a secret organization and the rules of the world."
+  },
+  {
+    "id": "attack-on-titan",
+    "title": "Attack on Titan",
+    "author": "Hajime Isayama",
+    "genres": [
+      "Action",
+      "Dark Fantasy",
+      "Mystery"
+    ],
+    "status": "completed",
+    "total_chapters": 139,
+    "description": "Humanity struggles to survive behind walls threatened by giant humanoid creatures."
+  },
+  {
+    "id": "fairy-tail",
+    "title": "FAIRY TAIL",
+    "author": "Hiro Mashima",
+    "genres": [
+      "Action",
+      "Fantasy",
+      "Adventure"
+    ],
+    "status": "completed",
+    "total_chapters": 545,
+    "description": "A young wizard joins a lively guild and takes on magical quests."
+  },
+  {
+    "id": "a-silent-voice",
+    "title": "A Silent Voice",
+    "author": "Yoshitoki Oima",
+    "genres": [
+      "Drama",
+      "Romance",
+      "School"
+    ],
+    "status": "completed",
+    "total_chapters": 62,
+    "description": "A former bully seeks redemption after meeting a classmate he once mistreated."
+  },
+  {
+    "id": "your-lie-in-april",
+    "title": "Your Lie in April",
+    "author": "Naoshi Arakawa",
+    "genres": [
+      "Drama",
+      "Music",
+      "Romance"
+    ],
+    "status": "completed",
+    "total_chapters": 44,
+    "description": "A talented pianist rediscovers music through an energetic violinist."
+  },
+  {
+    "id": "fire-force",
+    "title": "Fire Force",
+    "author": "Atsushi Ohkubo",
+    "genres": [
+      "Action",
+      "Science Fiction",
+      "Supernatural"
+    ],
+    "status": "completed",
+    "total_chapters": 304,
+    "description": "Firefighters with special abilities battle mysterious human combustion incidents."
+  },
+  {
+    "id": "vinland-saga",
+    "title": "Vinland Saga",
+    "author": "Makoto Yukimura",
+    "genres": [
+      "Historical",
+      "Adventure",
+      "Drama"
+    ],
+    "status": "completed",
+    "total_chapters": 220,
+    "description": "A Viking warrior travels through conflict and searches for a new purpose."
+  },
+  {
+    "id": "blue-lock",
+    "title": "Blue Lock",
+    "author": "Muneyuki Kaneshiro and Yusuke Nomura",
+    "genres": [
+      "Sports",
+      "Drama",
+      "Competition"
+    ],
+    "status": "ongoing",
+    "total_chapters": 300,
+    "description": "Young strikers enter a demanding program designed to create an elite football forward."
+  },
+  {
+    "id": "kurokos-basketball",
+    "title": "Kuroko's Basketball",
+    "author": "Tadatoshi Fujimaki",
+    "genres": [
+      "Sports",
+      "School",
+      "Comedy"
+    ],
+    "status": "completed",
+    "total_chapters": 275,
+    "description": "An unassuming player helps his basketball team challenge former prodigies."
+  },
+  {
+    "id": "slam-dunk",
+    "title": "Slam Dunk",
+    "author": "Takehiko Inoue",
+    "genres": [
+      "Sports",
+      "Comedy",
+      "School"
+    ],
+    "status": "completed",
+    "total_chapters": 276,
+    "description": "A high school troublemaker finds a new passion in competitive basketball."
+  }
+]
