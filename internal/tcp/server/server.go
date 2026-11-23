@@ -46,11 +46,12 @@ type Server struct {
 }
 
 type session struct {
-	conn   net.Conn
-	userID int64
-	out    chan []byte
-	done   chan struct{}
-	once   sync.Once
+	writeMu sync.Mutex
+	conn    net.Conn
+	userID  int64
+	out     chan []byte
+	done    chan struct{}
+	once    sync.Once
 }
 
 func (c *session) close() {
@@ -186,7 +187,13 @@ func (s *Server) PublishProgress(event library.ProgressEvent) {
 	if event.UserID <= 0 || event.MangaID == "" || event.Version <= 0 || event.Chapter < 0 {
 		return
 	}
-	data, err := json.Marshal(outputFrame{
+	// Progress fields are always present, including chapter 0.
+	data, err := json.Marshal(struct {
+		Type    string `json:"type"`
+		MangaID string `json:"manga_id"`
+		Chapter int32  `json:"chapter"`
+		Version int64  `json:"version"`
+	}{
 		Type: "progress_updated", MangaID: event.MangaID,
 		Chapter: event.Chapter, Version: event.Version,
 	})
@@ -222,24 +229,25 @@ func (s *Server) handleConnection(conn net.Conn) {
 	}
 	first, err := decodeFrame(scanner.Bytes())
 	if err != nil || first.Type != "auth" || first.Token == "" {
-		_ = writeFrame(conn, outputFrame{Type: "error", Error: "authentication required"})
+		writeTerminalFrame(conn, outputFrame{Type: "error", Error: "authentication required"})
 		return
 	}
 	userID, err := s.validateToken(first.Token)
 	if err != nil {
-		_ = writeFrame(conn, outputFrame{Type: "error", Error: "invalid or expired token"})
+		writeTerminalFrame(conn, outputFrame{Type: "error", Error: "invalid or expired token"})
 		return
 	}
-	if err := writeFrame(conn, outputFrame{Type: "authenticated", UserID: userID}); err != nil {
-		return
-	}
-	_ = conn.SetReadDeadline(time.Time{})
-
 	c := &session{conn: conn, userID: userID, out: make(chan []byte, queueCapacity), done: make(chan struct{})}
 	if !s.register(c) {
 		return
 	}
 	defer s.unregister(c)
+	// Register before sending the acknowledgment so the first published event
+	// cannot race with TCP session registration.
+	if err := c.writeFrame(outputFrame{Type: "authenticated", UserID: userID}); err != nil {
+		return
+	}
+	_ = conn.SetReadDeadline(time.Time{})
 
 	writerFinished := make(chan struct{})
 	go func() {
@@ -254,14 +262,16 @@ func (s *Server) handleConnection(conn net.Conn) {
 	for scanner.Scan() {
 		frame, err := decodeFrame(scanner.Bytes())
 		if err != nil {
-			s.enqueue(c, outputFrame{Type: "error", Error: "invalid JSON frame"})
+			_ = c.writeFrame(outputFrame{Type: "error", Error: "invalid JSON frame"})
+			gracefulFinish(conn)
 			return
 		}
 		switch frame.Type {
 		case "ping":
 			s.enqueue(c, outputFrame{Type: "pong"})
 		default:
-			s.enqueue(c, outputFrame{Type: "error", Error: "unsupported message type"})
+			_ = c.writeFrame(outputFrame{Type: "error", Error: "unsupported message type"})
+			gracefulFinish(conn)
 			return
 		}
 	}
@@ -312,11 +322,41 @@ func (c *session) writeLoop() {
 		case <-c.done:
 			return
 		case msg := <-c.out:
-			_ = c.conn.SetWriteDeadline(time.Now().Add(writeTimeout))
-			if _, err := c.conn.Write(msg); err != nil {
+			if err := c.writeRaw(msg); err != nil {
 				c.close()
 				return
 			}
+		}
+	}
+}
+
+// writeTerminalFrame returns a final error before disconnecting a client.
+// Waiting briefly after TCP CloseWrite avoids aborting a reply when a peer
+// has not yet drained the socket (notably on Windows).
+func writeTerminalFrame(conn net.Conn, frame outputFrame) {
+	if err := writeFrame(conn, frame); err != nil {
+		return
+	}
+	gracefulFinish(conn)
+}
+
+// gracefulFinish sends FIN on the write side and drains a bounded amount of
+// incoming data before the caller closes the connection. This prevents an
+// abrupt close from discarding a just-written JSON error frame. The read
+// deadline keeps misbehaving clients from blocking the server indefinitely.
+func gracefulFinish(conn net.Conn) {
+	tcp, ok := conn.(*net.TCPConn)
+	if !ok {
+		return
+	}
+	if err := tcp.CloseWrite(); err != nil {
+		return
+	}
+	_ = tcp.SetReadDeadline(time.Now().Add(150 * time.Millisecond))
+	var discard [512]byte
+	for {
+		if _, err := tcp.Read(discard[:]); err != nil {
+			return
 		}
 	}
 }
@@ -326,9 +366,36 @@ func writeFrame(conn net.Conn, frame outputFrame) error {
 	if err != nil {
 		return err
 	}
+	return writeAll(conn, append(data, '\n'))
+}
+
+func (c *session) writeFrame(frame outputFrame) error {
+	data, err := json.Marshal(frame)
+	if err != nil {
+		return err
+	}
+	return c.writeRaw(append(data, '\n'))
+}
+
+func (c *session) writeRaw(data []byte) error {
+	c.writeMu.Lock()
+	defer c.writeMu.Unlock()
+	return writeAll(c.conn, data)
+}
+
+func writeAll(conn net.Conn, data []byte) error {
 	_ = conn.SetWriteDeadline(time.Now().Add(writeTimeout))
-	_, err = conn.Write(append(data, '\n'))
-	return err
+	for len(data) > 0 {
+		n, err := conn.Write(data)
+		if err != nil {
+			return err
+		}
+		if n == 0 {
+			return io.ErrShortWrite
+		}
+		data = data[n:]
+	}
+	return nil
 }
 
 func decodeFrame(line []byte) (inputFrame, error) {
